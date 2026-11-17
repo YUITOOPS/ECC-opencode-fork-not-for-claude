@@ -15,6 +15,8 @@ OpenCode 1 на нативный API OpenCode 2.x. Это домашний ко�
 | `skills/` | 327 ECC-скиллов (автодискавери по `SKILL.md`) |
 | `rules/` | 122 файла правил; подключены через `instructions` в `opencode.jsonc` |
 | `plugins/ecc/` | плагин `ecc-hooks`: хуки + 8 инструментов |
+| `agents-skills/` | 5 скиллов, которые на хосте живут в `~/.agents/skills` |
+| `node_modules/` | ставятся командой `npm ci` |
 | `scripts/`, `hooks/`, `manifests/` | runtime-обвязка ECC (нужен `node`) |
 | `AGENTS.md` | глобальные правила ECC |
 | `opencode.jsonc` | глобальный конфиг: `instructions` + `permissions` |
@@ -24,6 +26,19 @@ OpenCode 1 на нативный API OpenCode 2.x. Это домашний ко�
 - `node_modules/` — ставятся командой `npm ci`.
 - `service.json` — пароль локального сервиса OpenCode, машинно-специфичный
   секрет. В контейнере он создаётся свой.
+
+## Скиллы вне ECC
+
+`agents-skills/` — копия `~/.agents/skills` (ponytail, ponytail-review,
+systematic-debugging, using-superpowers, verification-before-completion). На
+хосте они остаются на месте, а песочница получает их из этого репозитория в
+`~/.agents/skills`.
+
+Обновить копию после `npx skills add/update`:
+
+```powershell
+robocopy "$env:USERPROFILE\.agents\skills" agents-skills /MIR
+```
 
 ## Установка на новую машину
 
