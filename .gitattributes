@@ -1,0 +1,9 @@
+# Shell and Python payloads are executed on Linux inside the sandbox container;
+# CRLF would break shebangs.
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.json text eol=lf

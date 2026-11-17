@@ -1,0 +1,11 @@
+# Runtime state and secrets that must never leave this machine.
+# service.json holds the local OpenCode service password and pairing route.
+service.json
+
+# Dependencies are reinstalled from package-lock.json (npm ci).
+node_modules/
+
+# Local noise
+*.log
+.DS_Store
+Thumbs.db

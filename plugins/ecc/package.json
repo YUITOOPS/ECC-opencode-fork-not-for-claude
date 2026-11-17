@@ -1,0 +1,7 @@
+{
+  "name": "ecc-hooks",
+  "version": "2.2.3",
+  "private": true,
+  "type": "module",
+  "description": "Everything Claude Code (ECC) hooks plugin for OpenCode 2.x (home install)"
+}

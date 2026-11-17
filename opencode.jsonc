@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // ECC (Everything Claude Code) global install — OpenCode 2 native shape.
+  //
+  // Everything else is discovered from directories, so this file stays small:
+  //   agents/          26 ECC subagents          (markdown, mode: subagent)
+  //   commands/        35 ECC slash commands     (markdown templates)
+  //   skills/          327 ECC skills            (SKILL.md auto-discovery)
+  //   plugins/ecc/     hooks plugin + 8 tools    (auto-discovered)
+  //   AGENTS.md        global ECC rules          (ambient instructions)
+  //   scripts|hooks|manifests                    ECC runtime payload
+  //
+  // Ported from ECC v2.2.3 `.opencode/opencode.json` (V1 fields: `agent`,
+  // `command`, `permission`, `skills.paths`, `subtask`, tool booleans).
+
+  // `rules/` was shipped but never loaded: this key is the missing loader.
+  // Only the language-agnostic `common/` set goes here so it stays correct in
+  // every project. Domain sets (web, typescript, python, ...) belong in a
+  // project `opencode.jsonc` - see E:\First Try\opencode.jsonc.
+  //
+  // Deliberately NOT listed:
+  //   common/hooks.md        - tells you to edit ~/.claude/settings.json (no effect here)
+  //   common/agents.md       - documents ~/.claude/agents/, which does not exist here
+  //   common/performance.md  - Claude Code only: /effort, CLAUDE_CODE_*, Haiku/Sonnet/Opus
+  "instructions": [
+    "~/.config/opencode/rules/common/coding-style.md",
+    "~/.config/opencode/rules/common/security.md",
+    "~/.config/opencode/rules/common/testing.md",
+    "~/.config/opencode/rules/common/git-workflow.md",
+    "~/.config/opencode/rules/common/patterns.md",
+    "~/.config/opencode/rules/common/code-review.md",
+    "~/.config/opencode/rules/common/development-workflow.md"
+  ],
+
+  // V1 `"permission": { "mcp_*": "ask" }` becomes one ordered V2 rule.
+  "permissions": [
+    { "action": "mcp_*", "resource": "*", "effect": "ask" }
+  ]
+}
